@@ -1,3 +1,4 @@
+
 'use client';
 
 import { Bar, BarChart, XAxis, YAxis, Cell } from 'recharts';
