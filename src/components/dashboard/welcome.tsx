@@ -30,8 +30,8 @@ export default function Welcome() {
                         <p className="text-xl text-white/90 mt-2 max-w-2xl">Your journey to a smaller carbon footprint starts now. Let's make a difference, one week at a time.</p>
                     </div>
                 </div>
-                <CardContent className="p-8 bg-gray-50">
-                    <p className="text-lg mb-6 text-gray-700">
+                <CardContent className="p-8 bg-gray-50 dark:bg-card">
+                    <p className="text-lg mb-6 text-gray-700 dark:text-gray-300">
                         It looks like you haven't logged any activity yet. Get started by calculating your first weekly carbon footprint.
                     </p>
                     <Button asChild size="lg">
