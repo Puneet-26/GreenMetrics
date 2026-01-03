@@ -58,7 +58,8 @@ export default function EmissionsChart({ emissions }: EmissionsChartProps) {
                             innerRadius="60%"
                             strokeWidth={5}
                             labelLine={false}
-                            label={({ payload, percent, cx, cy, midAngle, outerRadius, textAnchor }) => {
+                            label={({ payload, percent, ...props }) => {
+                                const { cx, cy, midAngle, outerRadius, textAnchor } = props as any;
                                 const { category } = payload as any;
                                 const percentage = Math.round((percent || 0) * 100);
                                 if (percentage < 5) return null;
