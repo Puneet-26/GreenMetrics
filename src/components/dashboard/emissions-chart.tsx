@@ -60,7 +60,7 @@ export default function EmissionsChart({ emissions }: EmissionsChartProps) {
                             innerRadius="60%"
                             strokeWidth={5}
                             labelLine={false}
-                            label={({ name, percent, ...props }) => {
+                            label={({ name, percent, cornerRadius, ...props }) => {
                                 const percentage = Math.round((percent || 0) * 100);
                                 if (percentage < 5) return null;
                                 return (
