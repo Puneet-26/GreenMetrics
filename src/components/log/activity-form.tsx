@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { useFormState } from 'react-dom';
+import { useActionState } from 'react';
 import { useRouter } from 'next/navigation';
 import { logActivityAndGetTips } from '@/lib/actions';
 import { useFootprintData } from '@/lib/hooks/use-footprint-data';
@@ -17,7 +17,7 @@ import { Car, Bus, Zap, Leaf } from 'lucide-react';
 const initialState = { message: '', errors: {} };
 
 export default function ActivityForm() {
-    const [state, formAction] = useFormState(logActivityAndGetTips, initialState);
+    const [state, formAction] = useActionState(logActivityAndGetTips, initialState);
     const { addRecord } = useFootprintData();
     const { toast } = useToast();
     const router = useRouter();
