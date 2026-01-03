@@ -9,6 +9,12 @@ export const EMISSION_FACTORS = {
   // Electricity
   ELECTRICITY_PER_KWH: 0.45, // Global average
 
+  // Home Heating
+  NATURAL_GAS_PER_KWH: 0.20, // Natural gas emission factor
+  
+  // Waste
+  WASTE_PER_KG: 0.6, // Average emissions for mixed waste
+
   // Food (per week)
   DIET: {
     'meat-heavy': 60, // ~8.5 kg/day

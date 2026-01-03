@@ -9,11 +9,13 @@ export default function DashboardSkeleton() {
                     <Skeleton className="h-8 w-48" />
                     <Skeleton className="h-5 w-64" />
                 </div>
-                <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-                    <Skeleton className="h-32" />
-                    <Skeleton className="h-32" />
-                    <Skeleton className="h-32" />
-                    <Skeleton className="h-32" />
+                <div className="grid gap-4 grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
+                    <Skeleton className="h-28" />
+                    <Skeleton className="h-28" />
+                    <Skeleton className="h-28" />
+                    <Skeleton className="h-28" />
+                    <Skeleton className="h-28" />
+                    <Skeleton className="h-28" />
                 </div>
                 <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
                     <Card className="lg:col-span-2">

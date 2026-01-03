@@ -10,9 +10,8 @@ import type { FootprintRecord } from '@/lib/types';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Textarea } from '@/components/ui/textarea';
 import { SubmitButton } from '@/components/ui/submit-button';
-import { Car, Bus, Zap, Leaf } from 'lucide-react';
+import { Car, Zap, Leaf, Home, Trash2 } from 'lucide-react';
 
 const initialState = { message: '', errors: {} };
 
@@ -62,11 +61,16 @@ export default function ActivityForm() {
             </div>
 
             <div className="space-y-4">
-                <h3 className="text-lg font-medium text-primary flex items-center gap-2"><Zap size={20}/> Electricity</h3>
+                <h3 className="text-lg font-medium text-primary flex items-center gap-2"><Home size={20}/> Home Energy</h3>
                 <div className="space-y-2">
                     <Label htmlFor="electricityUsage">Electricity usage (kWh/week)</Label>
                     <Input id="electricityUsage" name="electricityUsage" type="number" placeholder="e.g., 70" defaultValue={0} />
                     {state.errors?.electricityUsage && <p className="text-sm text-destructive">{state.errors.electricityUsage}</p>}
+                </div>
+                <div className="space-y-2">
+                    <Label htmlFor="naturalGasUsage">Natural gas for heating (kWh/week)</Label>
+                    <Input id="naturalGasUsage" name="naturalGasUsage" type="number" placeholder="e.g., 100" defaultValue={0} />
+                    {state.errors?.naturalGasUsage && <p className="text-sm text-destructive">{state.errors.naturalGasUsage}</p>}
                 </div>
             </div>
 
@@ -88,14 +92,16 @@ export default function ActivityForm() {
                     {state.errors?.diet && <p className="text-sm text-destructive">{state.errors.diet}</p>}
                 </div>
             </div>
-            
-            <div className="space-y-2">
-                <Label htmlFor="habitsDescription">Describe your habits</Label>
-                <Textarea id="habitsDescription" name="habitsDescription" placeholder="e.g., I drive to work every day, usually eat chicken or beef for dinner, and try to turn off lights when leaving a room." />
-                <p className="text-sm text-muted-foreground">Give the AI some context about your lifestyle for better tips.</p>
-                {state.errors?.habitsDescription && <p className="text-sm text-destructive">{state.errors.habitsDescription}</p>}
-            </div>
 
+            <div className="space-y-4">
+                <h3 className="text-lg font-medium text-primary flex items-center gap-2"><Trash2 size={20}/> Waste</h3>
+                <div className="space-y-2">
+                    <Label htmlFor="wasteAmount">General waste produced (kg/week)</Label>
+                    <Input id="wasteAmount" name="wasteAmount" type="number" placeholder="e.g., 5" defaultValue={0} />
+                    {state.errors?.wasteAmount && <p className="text-sm text-destructive">{state.errors.wasteAmount}</p>}
+                </div>
+            </div>
+            
             <SubmitButton>Calculate & Get Tips</SubmitButton>
         </form>
     );

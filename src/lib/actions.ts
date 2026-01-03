@@ -9,8 +9,9 @@ const activitySchema = z.object({
   driveDistance: z.coerce.number().min(0, "Distance can't be negative."),
   publicTransportDistance: z.coerce.number().min(0, "Distance can't be negative."),
   electricityUsage: z.coerce.number().min(0, "Usage can't be negative."),
+  naturalGasUsage: z.coerce.number().min(0, "Usage can't be negative."),
+  wasteAmount: z.coerce.number().min(0, "Amount can't be negative."),
   diet: z.enum(['meat-heavy', 'balanced', 'vegetarian', 'vegan']),
-  habitsDescription: z.string().min(10, 'Please describe your habits in a bit more detail for better tips.'),
 });
 
 export type ActivityDataForState = z.infer<typeof activitySchema>;
@@ -27,8 +28,9 @@ export type FormState = {
         driveDistance?: string[];
         publicTransportDistance?: string[];
         electricityUsage?: string[];
+        naturalGasUsage?: string[];
+        wasteAmount?: string[];
         diet?: string[];
-        habitsDescription?: string[];
     };
 };
 
@@ -51,8 +53,9 @@ export async function logActivityAndGetTips(
     driveDistance,
     publicTransportDistance,
     electricityUsage,
-    diet,
-    habitsDescription,
+    naturalGasUsage,
+    wasteAmount,
+    diet
   } = validatedFields.data;
 
   try {
@@ -63,13 +66,19 @@ export async function logActivityAndGetTips(
 
     const electricityEmissions = electricityUsage * EMISSION_FACTORS.ELECTRICITY_PER_KWH;
 
+    const heatingEmissions = naturalGasUsage * EMISSION_FACTORS.NATURAL_GAS_PER_KWH;
+
+    const wasteEmissions = wasteAmount * EMISSION_FACTORS.WASTE_PER_KG;
+
     const foodEmissions = EMISSION_FACTORS.DIET[diet];
 
-    const totalEmissions = transportEmissions + electricityEmissions + foodEmissions;
+    const totalEmissions = transportEmissions + electricityEmissions + heatingEmissions + wasteEmissions + foodEmissions;
 
     const emissions: EmissionData = {
         transport: parseFloat(transportEmissions.toFixed(2)),
         electricity: parseFloat(electricityEmissions.toFixed(2)),
+        heating: parseFloat(heatingEmissions.toFixed(2)),
+        waste: parseFloat(wasteEmissions.toFixed(2)),
         food: parseFloat(foodEmissions.toFixed(2)),
         total: parseFloat(totalEmissions.toFixed(2)),
     };
@@ -78,8 +87,9 @@ export async function logActivityAndGetTips(
     const aiResponse = await personalizedReductionTips({
       transportEmissions,
       electricityEmissions,
-      foodEmissions,
-      habitsDescription,
+      heatingEmissions,
+      wasteEmissions,
+      foodEmissions
     });
 
     if (!aiResponse || !aiResponse.tips || aiResponse.tips.length === 0) {

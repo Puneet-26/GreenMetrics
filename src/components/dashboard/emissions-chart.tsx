@@ -25,16 +25,18 @@ export default function EmissionsChart({ emissions }: EmissionsChartProps) {
     const chartData = [
         { category: 'Transport', value: emissions.transport, fill: 'var(--color-transport)' },
         { category: 'Electricity', value: emissions.electricity, fill: 'var(--color-electricity)' },
+        { category: 'Heating', value: emissions.heating, fill: 'var(--color-heating)' },
         { category: 'Food', value: emissions.food, fill: 'var(--color-food)' },
+        { category: 'Waste', value: emissions.waste, fill: 'var(--color-waste)' },
     ].filter(d => d.value > 0);
 
     const chartConfig = {
         transport: { label: 'Transport', color: 'hsl(var(--chart-1))' },
         electricity: { label: 'Electricity', color: 'hsl(var(--chart-2))' },
+        heating: { label: 'Heating', color: 'hsl(var(--chart-3))' },
         food: { label: 'Food', color: 'hsl(var(--chart-4))' },
+        waste: { label: 'Waste', color: 'hsl(var(--chart-5))' },
     };
-
-    const totalEmissions = emissions.total;
 
     return (
         <Card>

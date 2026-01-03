@@ -18,9 +18,11 @@ const PersonalizedReductionTipsInputSchema = z.object({
     .describe('Weekly carbon emissions from transportation in kgCO2e.'),
   electricityEmissions:
     z.number().describe('Weekly carbon emissions from electricity consumption in kgCO2e.'),
+  heatingEmissions:
+    z.number().describe('Weekly carbon emissions from home heating in kgCO2e.'),
+  wasteEmissions:
+    z.number().describe('Weekly carbon emissions from waste disposal in kgCO2e.'),
   foodEmissions: z.number().describe('Weekly carbon emissions from food consumption in kgCO2e.'),
-  habitsDescription:
-    z.string().describe('Description of user habits related to carbon emissions.'),
 });
 
 export type PersonalizedReductionTipsInput = z.infer<typeof PersonalizedReductionTipsInputSchema>;
@@ -44,12 +46,13 @@ const prompt = ai.definePrompt({
   prompt: `You are an AI assistant designed to provide personalized and practical tips for users to reduce their carbon footprint.
 
   Based on the following information about the user's weekly carbon emissions, provide 3-5 actionable tips to help them reduce their environmental impact.
-  Consider a wide range of strategies, including transportation, energy consumption, and dietary choices.
+  Focus on the categories with the highest emissions. Consider a wide range of strategies, including transportation, energy consumption, heating, waste, and dietary choices.
 
   Transport Emissions: {{transportEmissions}} kgCO2e
   Electricity Emissions: {{electricityEmissions}} kgCO2e
+  Heating Emissions: {{heatingEmissions}} kgCO2e
+  Waste Emissions: {{wasteEmissions}} kgCO2e
   Food Emissions: {{foodEmissions}} kgCO2e
-  Habits Description: {{habitsDescription}}
 
   Tips:
   `,
