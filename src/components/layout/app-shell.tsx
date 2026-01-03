@@ -1,7 +1,7 @@
 'use client';
 
 import type { FC, ReactNode } from 'react';
-import { SidebarProvider, Sidebar, SidebarInset } from '@/components/ui/sidebar';
+import { SidebarProvider, SidebarInset } from '@/components/ui/sidebar';
 import AppHeader from '@/components/layout/header';
 import AppSidebar from '@/components/layout/sidebar';
 import { Toaster } from '@/components/ui/toaster';
@@ -13,7 +13,7 @@ interface AppShellProps {
 const AppShell: FC<AppShellProps> = ({ children }) => {
   return (
     <SidebarProvider>
-      <div className="relative min-h-screen">
+      <div className="relative flex min-h-screen">
           <AppSidebar />
           <SidebarInset>
             <AppHeader />
