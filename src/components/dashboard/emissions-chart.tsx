@@ -58,16 +58,15 @@ export default function EmissionsChart({ emissions }: EmissionsChartProps) {
                             innerRadius="60%"
                             strokeWidth={5}
                             labelLine={false}
-                            label={({ payload, ...props }) => {
-                                const { category, value } = payload as any;
-                                const percentage = Math.round((props.percent || 0) * 100);
+                            label={({ payload, percent, cx, cy, midAngle, outerRadius, textAnchor }) => {
+                                const { category } = payload as any;
+                                const percentage = Math.round((percent || 0) * 100);
                                 if (percentage < 5) return null;
                                 return (
                                 <text
-                                    {...props}
-                                    x={props.cx + (props.outerRadius + 10) * Math.cos(-props.midAngle * (Math.PI / 180))}
-                                    y={props.cy + (props.outerRadius + 10) * Math.sin(-props.midAngle * (Math.PI / 180))}
-                                    textAnchor={props.textAnchor}
+                                    x={cx + (outerRadius + 10) * Math.cos(-midAngle * (Math.PI / 180))}
+                                    y={cy + (outerRadius + 10) * Math.sin(-midAngle * (Math.PI / 180))}
+                                    textAnchor={textAnchor}
                                     dominantBaseline="central"
                                     className="fill-foreground text-xs"
                                 >
