@@ -1,6 +1,6 @@
 'use client';
 
-import { Bar, BarChart, XAxis, YAxis } from 'recharts';
+import { Bar, BarChart, XAxis, YAxis, Cell } from 'recharts';
 import { format } from 'date-fns';
 import {
     ChartContainer,
@@ -9,6 +9,8 @@ import {
     ChartConfig,
 } from '@/components/ui/chart';
 import type { FootprintRecord } from '@/lib/types';
+import { getFootprintColorInfo } from '@/lib/utils';
+
 
 interface ProgressChartProps {
     data: FootprintRecord[];
@@ -17,8 +19,19 @@ interface ProgressChartProps {
 const chartConfig = {
     total: {
         label: 'Total CO₂e',
-        color: 'hsl(var(--primary))',
     },
+    green: {
+        label: 'Low',
+        color: 'hsl(140, 80%, 60%)',
+    },
+    yellow: {
+        label: 'Medium',
+        color: 'hsl(48, 80%, 60%)',
+    },
+    red: {
+        label: 'High',
+        color: 'hsl(0, 80%, 60%)',
+    }
 } satisfies ChartConfig;
 
 export default function ProgressChart({ data }: ProgressChartProps) {
@@ -26,6 +39,7 @@ export default function ProgressChart({ data }: ProgressChartProps) {
         .map(record => ({
             date: format(new Date(record.date), 'MMM d'),
             total: record.emissions.total,
+            fill: getFootprintColorInfo(record.emissions.total).color,
         }))
         .reverse(); // To show chronologically
 
@@ -52,9 +66,12 @@ export default function ProgressChart({ data }: ProgressChartProps) {
                 />
                 <Bar
                     dataKey="total"
-                    fill="var(--color-total)"
                     radius={4}
-                />
+                >
+                    {chartData.map((entry, index) => (
+                        <Cell key={`cell-${index}`} fill={entry.fill} />
+                    ))}
+                </Bar>
             </BarChart>
         </ChartContainer>
     );
