@@ -2,11 +2,12 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Leaf, Home, PlusCircle, BarChart3 } from 'lucide-react';
+import { Leaf, LayoutDashboard, PlusCircle, BarChart3, Home } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const navItems = [
-  { href: '/', label: 'Dashboard', icon: Home },
+  { href: '/', label: 'Home', icon: Home },
+  { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
   { href: '/log', label: 'Log Activity', icon: PlusCircle },
   { href: '/progress', label: 'Progress', icon: BarChart3 },
 ];
