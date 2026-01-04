@@ -26,7 +26,7 @@ export default function HomePage() {
                     )}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                     <div className="absolute bottom-0 left-0 p-8">
-                        <h1 className="text-5xl font-bold font-headline text-white drop-shadow-md">Welcome to EcoTrack</h1>
+                        <h1 className="text-5xl font-bold font-headline text-white drop-shadow-md">Welcome to GreenMetrics</h1>
                         <p className="text-xl text-white/90 mt-2 max-w-2xl">Your journey to a smaller carbon footprint starts now. Let's make a difference, one week at a time.</p>
                     </div>
                 </div>
@@ -81,7 +81,7 @@ export default function HomePage() {
                     </CardHeader>
                     <CardContent>
                         <p className="text-muted-foreground">
-                            By understanding your carbon footprint, you can identify the biggest areas of impact and make informed choices to reduce it. Small changes in our daily habits can collectively lead to a significant positive effect on the planet. EcoTrack helps you see where you stand and guides you toward a more sustainable lifestyle.
+                            By understanding your carbon footprint, you can identify the biggest areas of impact and make informed choices to reduce it. Small changes in our daily habits can collectively lead to a significant positive effect on the planet. GreenMetrics helps you see where you stand and guides you toward a more sustainable lifestyle.
                         </p>
                     </CardContent>
                 </Card>

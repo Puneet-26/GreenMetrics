@@ -1,4 +1,4 @@
-# EcoTrack - Carbon Footprint Tracker
+# GreenMetrics - Carbon Footprint Tracker
 
 This is a Next.js application built with Firebase Studio that allows users to track and reduce their carbon footprint.
 

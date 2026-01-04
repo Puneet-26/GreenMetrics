@@ -3,7 +3,7 @@ import './globals.css';
 import AppShell from '@/components/layout/app-shell';
 
 export const metadata: Metadata = {
-  title: 'EcoTrack',
+  title: 'GreenMetrics',
   description: 'Track and reduce your carbon footprint',
 };
 

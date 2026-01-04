@@ -19,7 +19,7 @@ export default function AppHeader() {
     <header className="sticky top-0 z-50 flex h-16 items-center gap-8 border-b bg-background/80 px-4 backdrop-blur-sm sm:px-6 lg:px-8">
       <Link href="/" className="flex items-center gap-2">
         <Leaf className="h-6 w-6 text-primary" />
-        <h1 className="text-xl font-bold font-headline text-primary">EcoTrack</h1>
+        <h1 className="text-xl font-bold font-headline text-primary">GreenMetrics</h1>
       </Link>
       <nav className="flex items-center gap-1">
         {navItems.map((item) => (

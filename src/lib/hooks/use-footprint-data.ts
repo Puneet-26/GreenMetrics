@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import type { FootprintRecord } from '@/lib/types';
 
-const STORAGE_KEY = 'ecoTrackData';
+const STORAGE_KEY = 'greenMetricsData';
 
 export function useFootprintData() {
   const [records, setRecords] = useState<FootprintRecord[]>([]);
